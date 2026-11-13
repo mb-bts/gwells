@@ -17,8 +17,8 @@
       <label v-if="(type === 'text' || type === 'number' || type === 'select') && !anyValueCheckbox" :id="`${id}Label`" :label-for="`${id}Input`" class="col-form-label">{{ label }}</label>
       <legend v-else tabindex="-1" :id="`${id}Label`" class="col-form-label">{{ label }}</legend>
     </div>
-    <div v-if="anyValueCheckbox" class="col-span-12 sm:col-span-3">
-      <div class="pt-2 flex sm:justify-end">
+    <div v-if="anyValueCheckbox" class="col-span-4 sm:col-span-2">
+      <div class="pt-2 flex sm:justify-end sm:pr-3">
         <div class="flex items-center gap-2">
           <Checkbox
             :inputId="`${id}AnyValue`"
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div v-if="!anyValueCheckbox" :class="`col-span-${removable ? 11 : 12} sm:col-start-${labelColWidth + 1} sm:col-end-${removable ? 12 : 13}`">
+    <div :class="anyValueCheckbox ? `col-span-${removable ? 7 : 8} sm:col-span-${removable ? 5 : 6}` : `col-span-${removable ? 11 : 12} sm:col-start-${labelColWidth + 1} sm:col-end-${removable ? 12 : 13}`">
       <InputText
         v-if="type === 'text' || type === 'number'"
         :type="type"
@@ -250,4 +250,7 @@ export default {
 </script>
 
 <style lang="scss">
+.p-inputtext:disabled {
+  caret-color: transparent;
+}
 </style>
